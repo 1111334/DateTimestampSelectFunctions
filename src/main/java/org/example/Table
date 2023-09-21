@@ -1,0 +1,45 @@
+CREATE TABLE MEAL_ORDER(
+TIME_MEAL_ORDERED TIMESTAMP,
+  MEAL_NAME VARCHAR(255),
+  NUMBER INT(10)
+);
+
+INSERT INTO MEAL_ORDER(TIME_MEAL_ORDERED, MEAL_NAME, NUMBER)
+VALUES(NOW(), 'Spaghetti Bolognese', 12);
+
+INSERT INTO MEAL_ORDER(TIME_MEAL_ORDERED, MEAL_NAME, NUMBER)
+VALUES(DATE_ADD(NOW(), INTERVAL 1 HOUR), 'Grilled Chicken Sandwich', 5);
+
+INSERT INTO MEAL_ORDER(TIME_MEAL_ORDERED, MEAL_NAME, NUMBER)
+VALUES(DATE_ADD(NOW(), INTERVAL 2 HOUR), 'Pesto Pasta', 6);
+
+INSERT INTO MEAL_ORDER(TIME_MEAL_ORDERED, MEAL_NAME, NUMBER)
+VALUES(DATE_ADD(NOW(), INTERVAL 3 HOUR), 'Pesto Pasta', 9);
+
+INSERT INTO MEAL_ORDER(TIME_MEAL_ORDERED, MEAL_NAME, NUMBER)
+VALUES(DATE_ADD(NOW(), INTERVAL 4 HOUR), 'Grilled Chicken Sandwich', 4);
+
+INSERT INTO MEAL_ORDER(TIME_MEAL_ORDERED, MEAL_NAME, NUMBER)
+VALUES(DATE_ADD(NOW(), INTERVAL 5 HOUR), 'Pesto Pasta', 7);
+
+INSERT INTO MEAL_ORDER(TIME_MEAL_ORDERED, MEAL_NAME, NUMBER)
+VALUES(DATE_ADD(NOW(), INTERVAL 6 HOUR), 'Spaghetti Bolognese', 10);
+
+INSERT INTO MEAL_ORDER(TIME_MEAL_ORDERED, MEAL_NAME, NUMBER)
+VALUES(DATE_ADD(NOW(), INTERVAL 7 HOUR), 'Pesto Pasta', 2);
+
+
+SELECT
+CONCAT('MEAL-NAME=', MEAL_NAME) AS MEAL_NAME_FORMATTED, //CONCAT serve a concatenare una stringa con i nomi stampando MEAL_NAME= Pesto Pasta; ecc..
+LOWER(MEAL_NAME) AS LOWERCASE_NAME, //LOWER serve a stampare tutti i nomi della tabella in minuscolo
+UPPER(MEAL_NAME) AS UPPERCASE_NAME, //UPPER serve a stampare tutti i nomi della tabella in maiuscolo
+TRIM(MEAL_NAME) AS TRIMMED_MEAL, //TRIM serve per rimuovere gli spazi iniziali e finali
+LENGTH(MEAL_NAME) AS NAME_LENGTH, //LENGTH serve per stampare la lunghezza della stringa in questo caso per tutti i nomi della tabella
+SUBSTR(MEAL_NAME, 5) AS FIRST_FIVE_LETTERS_OF_MEAL, //SUBSTR serve a stampare tutti i nomi della tabella dal quinto carattere in poi
+ROUND(NUMBER * 2.5, 2) AS ROUNDED_NUMBER, //ROUND serve per arrotondare un numero a un numero specifico di decimali.
+DATE_ADD(NOW(), INTERVAL 7 DAY), //DATE_ADD serve ad aggiungere un intervallo di tempo specificato da una data
+DATE_SUB(NOW(), INTERVAL 5 DAY), //DATE_SUB serve a rimuovere un intervallo di tempo specificato da una data
+FORMAT(NUMBER, '234,456') AS FORMATTED_NUMBER //FORMAT è utilizzata per formattare un valore numerico o decimale in una stringa
+FROM MEAL_ORDER;
+SELECT DATE_ADD(DATE_ADD(NOW(), INTERVAL -7 DAY), INTERVAL 3 MONTH) AS BIRTHDAY_DATE;
+
